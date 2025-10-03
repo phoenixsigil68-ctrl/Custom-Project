@@ -2,27 +2,49 @@ import { useEffect, useRef } from "react";
 import { LandingPage } from "./landing-page";
 
 export function Classes() {
+  let section = document.querySelectorAll(".section-title");
   const rootRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
+    // Animate class-cards
     const cards = root.querySelectorAll<HTMLDivElement>(".class-card");
-    const observer = new window.IntersectionObserver(
-      (entries) => {
+    const cardObserver = new window.IntersectionObserver(
+      (entries, observer) => {
         entries.forEach((entry) => {
           const card = entry.target as HTMLDivElement;
           if (entry.isIntersecting) {
             card.classList.add("visible");
-          } else {
-            card.classList.remove("visible");
+            observer.unobserve(card); // Stop observing after first reveal
           }
         });
       },
       { threshold: 0.3 }
     );
-    cards.forEach((card: HTMLDivElement) => observer.observe(card));
-    return () => observer.disconnect();
+    cards.forEach((card) => cardObserver.observe(card));
+
+    // Animate section-title only once when in viewport
+    const sectionTitle = root.querySelector<HTMLDivElement>(".section-title");
+    let titleObserver: IntersectionObserver | undefined;
+    if (sectionTitle) {
+      titleObserver = new window.IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              sectionTitle.classList.add("reveal");
+              observer.unobserve(sectionTitle);
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+      titleObserver.observe(sectionTitle);
+    }
+    return () => {
+      cardObserver.disconnect();
+      if (titleObserver) titleObserver.disconnect();
+    };
   }, []);
 
   return (

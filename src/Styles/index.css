@@ -126,7 +126,7 @@ body {
   cursor: pointer;
   backdrop-filter: blur(1.5px);
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(60px);
   transition: all 0.7s ease;
 }
 
@@ -142,8 +142,8 @@ body {
 }
 
 .section-title {
-  transform: translate(-100%);
-  opacity: 0;
+  transform: translateY(100%);
+  opacity: 1;
   transition: all 0.8s ease;
 }
 .section-title.reveal {
