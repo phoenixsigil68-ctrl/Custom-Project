@@ -125,8 +125,14 @@ body {
   color: var(--bg);
   cursor: pointer;
   backdrop-filter: blur(1.5px);
-  opacity: 1;
+  opacity: 0;
+  transform: translateY(40px);
   transition: all 0.7s ease;
+}
+
+.class-card.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .class-card:hover {

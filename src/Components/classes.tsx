@@ -1,13 +1,32 @@
 import { useEffect, useRef } from "react";
-import "../Styles/index.css";
 import { LandingPage } from "./landing-page";
-let animate = document.querySelector(".section-title");
 
 export function Classes() {
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const rootRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+    const cards = root.querySelectorAll<HTMLDivElement>(".class-card");
+    const observer = new window.IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const card = entry.target as HTMLDivElement;
+          if (entry.isIntersecting) {
+            card.classList.add("visible");
+          } else {
+            card.classList.remove("visible");
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    cards.forEach((card: HTMLDivElement) => observer.observe(card));
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className="dashboard">
+    <div className="dashboard" ref={rootRef}>
       <section className="top-section">
         <div className="title">
           <h1 className="header">Welcome To Student Learning Portal</h1>
@@ -32,7 +51,7 @@ export function Classes() {
       </div>
 
       <section className="class-section">
-        <div className="class-container" ref={containerRef}>
+        <div className="class-container">
           <div className="class-card" style={{ gridArea: "card-1" }}>
             1
           </div>
