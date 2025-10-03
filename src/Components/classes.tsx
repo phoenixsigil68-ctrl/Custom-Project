@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { LandingPage } from "./landing-page";
+import { data } from "../lib/data";
 
 export function Classes() {
   let section = document.querySelectorAll(".section-title");
@@ -47,6 +48,16 @@ export function Classes() {
     };
   }, []);
 
+  const handleCardClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const classNameValue = e.currentTarget.dataset.item;
+    const found = data.find((item) => item.className === classNameValue);
+    if (found) {
+      console.log(`Subjects: ${found.subjects.join(", ")}`);
+    } else {
+      console.log("Content is not available");
+    }
+  };
+
   return (
     <div className="dashboard" ref={rootRef}>
       <section className="top-section">
@@ -74,13 +85,28 @@ export function Classes() {
 
       <section className="class-section">
         <div className="class-container">
-          <div className="class-card" style={{ gridArea: "card-1" }}>
+          <div
+            className="class-card"
+            style={{ gridArea: "card-1" }}
+            data-item="ધોરણ ૧"
+            onClick={handleCardClick}
+          >
             1
           </div>
-          <div className="class-card" style={{ gridArea: "card-2" }}>
+          <div
+            className="class-card"
+            style={{ gridArea: "card-2" }}
+            data-item="ધોરણ ૯"
+            onClick={handleCardClick}
+          >
             2
           </div>
-          <div className="class-card" style={{ gridArea: "card-3" }}>
+          <div
+            className="class-card"
+            style={{ gridArea: "card-3" }}
+            data-item="ધોરણ ૩"
+            onClick={handleCardClick}
+          >
             3
           </div>
           <div className="class-card" style={{ gridArea: "card-4" }}>
