@@ -1,0 +1,40 @@
+.subject-container {
+  display: grid;
+  grid-template-columns: repeat(3, 250px);
+  grid-template-rows: repeat(2, 160px);
+  grid-template-areas:
+    "subject-1 subject-2 subject-3"
+    "subject-4 subject-5 subject-6";
+  column-gap: 80px;
+  row-gap: 20px;
+  justify-content: center;
+  margin-top: 100px;
+  transition: all 0.3s ease;
+  opacity: 1;
+}
+
+.subject:hover {
+  transform: scale(1.06);
+}
+
+.subjects {
+  background: linear-gradient(135deg, white, rgb(223, 185, 191));
+  /* border: 3px solid red;  Removed test border */
+  border-radius: 20px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  align-items: center;
+  animation: fadeIn 2s 1 forwards;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translateY(50px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

@@ -136,7 +136,7 @@ body {
 }
 
 .class-card:hover {
-  transform: scale(1.07);
+  transform: scale(1.06);
   box-shadow: 0 12px 32px 0 rgba(0, 0, 0, 0.16), 0 2px 8px 0 rgba(0, 0, 0, 0.1);
   border-color: var(--highlight);
 }

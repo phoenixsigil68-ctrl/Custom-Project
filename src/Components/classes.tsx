@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { LandingPage } from "./landing-page";
 import { data } from "../lib/data";
+import { Link } from "react-router-dom";
 
 export function Classes() {
   let section = document.querySelectorAll(".section-title");
@@ -48,19 +49,6 @@ export function Classes() {
     };
   }, []);
 
-  const handleCardClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    const classNameValue = e.currentTarget.dataset.item;
-    const found = data.find((item) => item.className === classNameValue);
-    if (found) {
-      console.log(`Subjects: ${found.subjects.join(", ")}`);
-    } else {
-      console.log("Content is not available");
-    }
-
-    localStorage.setItem("foundClass", classNameValue || "");
-    window.location.href = "show-content.html";
-  };
-
   return (
     <div className="dashboard" ref={rootRef}>
       <section className="top-section">
@@ -88,66 +76,94 @@ export function Classes() {
 
       <section className="class-section">
         <div className="class-container">
-          <div
+          <Link
+            to="/class/ધોરણ ૧"
             className="class-card"
-            style={{ gridArea: "card-1" }}
-            data-item="ધોરણ ૧"
-            onClick={handleCardClick}
+            style={{ gridArea: "card-1", textDecoration: "none" }}
           >
             1
-          </div>
-          <div
+          </Link>
+          <Link
+            to="/class/ધોરણ ૯"
             className="class-card"
-            style={{ gridArea: "card-2" }}
-            data-item="ધોરણ ૯"
-            onClick={handleCardClick}
+            style={{ gridArea: "card-2", textDecoration: "none" }}
           >
             2
-          </div>
-          <div
+          </Link>
+          <Link
+            to="/class/ધોરણ ૧૦"
             className="class-card"
-            style={{ gridArea: "card-3" }}
-            data-item="ધોરણ ૩"
-            onClick={handleCardClick}
+            style={{ gridArea: "card-3", textDecoration: "none" }}
           >
             3
-          </div>
-          <div
+          </Link>
+          <Link
+            to="/class/ધોરણ ૧૧"
             className="class-card"
-            style={{ gridArea: "card-4" }}
-            data-item="ધોરણ ૪"
-            onClick={handleCardClick}
+            style={{ gridArea: "card-4", textDecoration: "none" }}
           >
             4
-          </div>
+          </Link>
         </div>
         <div className="class-container reveal">
-          <div className="class-card" style={{ gridArea: "card-1" }}>
+          <Link
+            className="class-card"
+            style={{ gridArea: "card-1", textDecoration: "none" }}
+            to="#"
+          >
             5
-          </div>
-          <div className="class-card" style={{ gridArea: "card-2" }}>
+          </Link>
+          <Link
+            className="class-card"
+            style={{ gridArea: "card-2", textDecoration: "none" }}
+            to="#"
+          >
             6
-          </div>
-          <div className="class-card" style={{ gridArea: "card-3" }}>
+          </Link>
+          <Link
+            className="class-card"
+            style={{ gridArea: "card-3", textDecoration: "none" }}
+            to="#"
+          >
             7
-          </div>
-          <div className="class-card" style={{ gridArea: "card-4" }}>
+          </Link>
+          <Link
+            className="class-card"
+            style={{ gridArea: "card-4", textDecoration: "none" }}
+            to="#"
+          >
             8
-          </div>
+          </Link>
         </div>
         <div className="class-container reveal">
-          <div className="class-card" style={{ gridArea: "card-1" }}>
+          <Link
+            className="class-card"
+            style={{ gridArea: "card-1", textDecoration: "none" }}
+            to="#"
+          >
             9
-          </div>
-          <div className="class-card" style={{ gridArea: "card-2" }}>
+          </Link>
+          <Link
+            className="class-card"
+            style={{ gridArea: "card-2", textDecoration: "none" }}
+            to="#"
+          >
             10
-          </div>
-          <div className="class-card" style={{ gridArea: "card-3" }}>
+          </Link>
+          <Link
+            className="class-card"
+            style={{ gridArea: "card-3", textDecoration: "none" }}
+            to="#"
+          >
             11
-          </div>
-          <div className="class-card" style={{ gridArea: "card-4" }}>
+          </Link>
+          <Link
+            className="class-card"
+            style={{ gridArea: "card-4", textDecoration: "none" }}
+            to="#"
+          >
             12
-          </div>
+          </Link>
         </div>
       </section>
     </div>
