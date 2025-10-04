@@ -56,6 +56,9 @@ export function Classes() {
     } else {
       console.log("Content is not available");
     }
+
+    localStorage.setItem("foundClass", classNameValue || "");
+    window.location.href = "show-content.html";
   };
 
   return (
@@ -109,7 +112,12 @@ export function Classes() {
           >
             3
           </div>
-          <div className="class-card" style={{ gridArea: "card-4" }}>
+          <div
+            className="class-card"
+            style={{ gridArea: "card-4" }}
+            data-item="ધોરણ ૪"
+            onClick={handleCardClick}
+          >
             4
           </div>
         </div>
